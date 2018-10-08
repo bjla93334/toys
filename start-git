@@ -1,0 +1,41 @@
+#!/bin/csh -f
+# start-git .../git-projects/<dir>
+
+# git config user.name ${GIT_AUTHOR_NAME}
+# git config user.email ${GIT_AUTHOR_EMAIL}
+
+
+if ( 'git-projects' != "`basename ${PWD}`") then
+    echo "WARNING: dir not under .../git-projects/ ??"
+endif
+
+if ( $#argv < 1 ) then
+    echo ${PWD}
+    echo "usage: start-git .../git-projects/<dir>"
+    exit -1
+endif
+
+
+set REPO = $1
+
+git init ${REPO}
+cd ${REPO}
+env \
+GIT_AUTHOR_DATE="Thu, 01 Jan 1970 00:00:00 +0000" \
+GIT_COMMITTER_DATE="Thu, 01 Jan 1970 00:00:00 +0000" \
+git commit --allow-empty -m 'Initial commit'
+git tag "init"
+
+git log
+
+
+## need to first create a repo on github, then
+## check .git/config for 'url' value :
+## e.g. https://github.com/earthcomputing/bjackson-${REPO}.git
+
+## git remote add origin https://github.com/earthcomputing/bjackson-${REPO}.git
+## git remote add origin https://github.com/bjla93334/${REPO}.git
+## git remote add origin git@github.com:${GIT_AUTHOR_NAME}/${REPO}.git
+## git push origin master --force
+
+## git add README.md
