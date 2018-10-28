@@ -46,7 +46,7 @@ In a nutshell, git is a power tool.  It is a technology that allows people to ma
 
 It may very well be that your choice of using Git is intended to be much simpler than this, in which case your intent may be simply to manage your own private, local universe over time like using Apple's Time Machine to capture the history of your work and allow you to refer backward in time to your own earlier work.
 
-Howwever, it's much more likely that you've chosen git because you want to colaborate with others (or just be individually schizophrenic). In which case something you're likely to spend alot of energy on is trying to determine how 2 (or more) different copies of a file compare or contrast with each other.  This is the "difference problem", and understanding this situation can be quite a challenge.
+However, it's much more likely that you've chosen git because you want to colaborate with others (or you might choose to have multiple personalities - individula feature projects). In which case something you're likely to spend alot of energy on is trying to determine how 2 (or more) different copies of a file compare or contrast with each other.  This is the "difference problem", and understanding this situation can be quite a challenge.
 
 If you're very lucky, when you start to investigate a situation, you may find that the pair of file contents are 'identical'.  Lucky you.  Either you've found that nothing has changed, or perhaps only that someone has moved the file contents around (i.e. file or path renaming).  If you've remembered to use "git mv", you'll be greeting with a "renamed file" indication.  Otherwise, you may find yourself confused by the report of a delete/create file pair.
 
