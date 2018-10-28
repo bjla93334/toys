@@ -36,6 +36,12 @@ When the project reaches critical mass, or when there's an actual need to colabo
 In the case of github one needs to establish the repo's existence on the hosting service before the 'push' can happen.
 It's important to be careful to NOT do anything to create content for the project/repo on the hosting service (e.g. "add a README" from the service's browser user interface).
 
+## Staring feature development:
+
+It's highly advisable to have a 'README' file that covers the basic information about why a project exists.  It's particularly convenient for the content of this document to be in 'markdown' format [ref: Wikipedia, GitHub Flavored Markdown (GFM)].  I recommend you do this first (after start-git) and that you continually check it to ensure that what it says is accurate and complete.  Worse than having no documentation is having documentation that is incomplete, wrong, or otherwise misleading. A few words of advice: take the time to invest in learning GFM plus avoid getting too fancy with your README.md - some folks might not have a formatter handy and resort to reading the raw content.
+
+    git add README.md
+
 ## Preliminaries:
 
 From the Wikipedia entry for Git:
