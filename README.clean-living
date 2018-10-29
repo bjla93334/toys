@@ -1,0 +1,47 @@
+# toy
+
+## Clean living - or being prepared for a disaster
+
+Let's assume you want to sleep soundly each nite, unworried about the possibility that you've overlooked something such as having forgotten to place files under git's control 
+or that you left out changes out when you did your commit.
+
+Overcoming fear is the basic challenge of controlling the project's content - everything in your computer's filesystem within (or below) the projects toplevel directory/folder.  If you want to know what that set of files is, you can do:
+
+    cd `git rev-parse --show-toplevel`
+    find . -type f
+
+In contrast, if you want to know which of those files is currently under git's conrol, you can do:
+
+    git ls-files
+
+Sort and compare these lists (skipping all the /.git/ entries) lets you determine what files are "at risk".  Generally, you can rely upon git to let you know this EXCEPT when git is overlooking things because you've explicitly blacklisted them by adding entries to the .gitignore file.
+
+Along with knowing about entire files, you need to worry about content differences.  When you want to know those changes (pending), use:
+
+    git status
+
+To ensure that things are what they appear to be, check the current content of the various blacklist files:
+
+    find . -name .gitignore
+
+While it's perfectly proper to blacklist 'derived' files that are generated during the build process, it's not a good idea to include other clutter in the blacklist.  This is because everyone who has a copy of the repo inherits .gitignore and spurious entries may cause problems for others.  They may have an entirely different opinion about what should be under git control.
+
+In particular, you want to watch out for when a file that's under git control IS ALSO included in the blacklist.  This could result in crud persisting in the repo, or worse still inhibiting others from detecting that intended changes are never updated for a file (or set of files).
+
+##
+
+find . -type f | grep -v /.git/ | sed -e 's|^./||' | sort > /tmp/files.fs
+git ls-files | sort > /tmp/files.git
+diff /tmp/files.{git,fs}
+
+##
+
+git config --list
+
+## tricks:
+
+    git config --global alias.root 'rev-parse --show-toplevel'
+
+    csh# cd `git root`
+    bash# cd $(git root)
+
