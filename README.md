@@ -28,13 +28,15 @@ When the project reaches critical mass, or when there's an actual need to colabo
 
     REPO=toys
     OWNER=bjla93334
-    SERViCE=github.com
+    SERVICE=github.com
 
-    git remote add origin https://${SERViCE}/${OWNER}/${REPO}.git
+    git remote add origin https://${SERVICE}/${OWNER}/${REPO}.git
     git push origin master
 
 In the case of github one needs to establish the repo's existence on the hosting service before the 'push' can happen.
 It's important to be careful to NOT do anything to create content for the project/repo on the hosting service (e.g. "add a README" from the service's browser user interface).
+
+NOTE: The use of 'origin' is magic/arbitrary. This is the default remote-branch name used by 'clone'.  You might want to consider a more complex workflow/release process that involves 'unstable', 'staging', and 'release'.
 
 ## Staring feature development:
 
