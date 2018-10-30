@@ -29,7 +29,9 @@ While it's perfectly proper to blacklist 'derived' files that are generated duri
 In particular, you want to watch out for when a file that's under git control IS ALSO included in the blacklist.  This could result in crud persisting in the repo, or worse still inhibiting others from detecting that intended changes are never updated for a file (or set of files).
 
 ##
+# check-git(.sh):
 
+cd `git rev-parse --show-toplevel`
 find . -type f | grep -v /.git/ | sed -e 's|^./||' | sort > /tmp/files.fs
 git ls-files | sort > /tmp/files.git
 diff /tmp/files.{git,fs}
